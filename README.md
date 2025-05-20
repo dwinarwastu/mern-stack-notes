@@ -7,7 +7,7 @@ git clone https://github.com/dwinarwastu/mern-stack-notes.git
 cd mern-stack-notes/backend
 ```
 
-2. Install dependencies
+2. Install dependencies backend
 
 ```bash
 npm install
@@ -28,7 +28,20 @@ UPSTASH_REDIS_REST_TOKEN=
 
 ```
 
-4. Run the server
+4. Run the server backend
+
+```bash
+npm run dev
+```
+
+5. Install dependencies frontend
+
+```bash
+cd mern-stack-notes/frontend
+npm install
+```
+
+6. Run the client frontend
 
 ```bash
 npm run dev
