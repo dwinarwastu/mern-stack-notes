@@ -3,7 +3,7 @@ import Note from "../models/note.model.js";
 export async function getAllNotes(req, res) {
   try {
     const notes = await Note.find().sort({ _id: -1 });
-    res.status(200).json({ message: "success fetch all note", data: notes });
+    res.status(200).json({ message: "success fetch all note", notes: notes });
   } catch (error) {
     console.error("error in getAllNotes Contrroller", error);
     res.status(500).json({ message: "internal server error" });
@@ -18,7 +18,7 @@ export async function getNote(req, res) {
       return res.status(404).json({ message: "note is not found" });
     res
       .status(200)
-      .json({ message: "success fetch note by id", data: noteById });
+      .json({ message: "success fetch note by id", note: noteById });
   } catch (error) {
     console.error("error in getNote Controller", error);
     res.status(500).json({ message: "internal server error" });
@@ -30,7 +30,7 @@ export async function addNote(req, res) {
     const { title, content } = req.body;
     const note = new Note({ title, content });
     const saveNote = await note.save();
-    res.status(201).json({ message: "success create note", data: saveNote });
+    res.status(201).json({ message: "success create note", note: saveNote });
   } catch (error) {
     console.error("error in addNote Contreller", error);
     res.status(500).json({ message: "internal server error" });
@@ -48,7 +48,7 @@ export async function updateNote(req, res) {
     );
     if (!noteUpdate)
       return res.status(404).json({ message: "note is not found" });
-    res.status(200).json({ message: "success update note", data: noteUpdate });
+    res.status(200).json({ message: "success update note", note: noteUpdate });
   } catch (error) {
     console.error("error in updateNote Controller", error);
     res.status(500).json({ message: "internal server error" });
